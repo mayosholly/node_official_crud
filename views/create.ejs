@@ -1,0 +1,35 @@
+<!-- views/create.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Product</title>
+</head>
+<body>
+  <h1>Create Product</h1>
+  <% if (messages.error && messages.error.length) { %>
+    <div class="alert alert-danger">
+      <% messages.error.forEach(message => { %>
+        <p><%= message %></p>
+      <% }); %>
+    </div>
+  <% } %>
+  <form action="/products/create" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="<%= messages.formData.name || '' %>">
+    <p id="name-error"><%= messages.error[0] %></p>
+    <p id="name-error"><%= messages.error[1] %></p>
+    <br>
+    <label for="price">Price:</label>
+    <input type="text" name="price" id="price" value="<%= messages.formData.price || '' %>" >
+    <p id="price-error"><%= messages.error.price %></p>
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="description"></textarea>
+
+    <br>
+    <button type="submit">Create</button>
+  </form>
+</body>
+</html>
